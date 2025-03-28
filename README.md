@@ -1,6 +1,6 @@
 # Wordpress x Pakasir
 
-Sebelum memulai, pastikan Anda telah memiliki proyek di Pakair. Jika belum, Anda dapat [membuatnya sekarang](https://pakasir.zone.id).
+Sebelum memulai, pastikan Anda telah memiliki proyek di Pakasir. Jika belum, Anda dapat [membuatnya sekarang](https://pakasir.zone.id).
 
 Setelah membuat proyek, Anda perlu mencacat/menyimpan Slug dan API Key. Kita akan membutuhkannya nanti.
 
