@@ -17,6 +17,7 @@ class WC_Gateway_Pakasir extends WC_Payment_Gateway {
 
         $this->enabled = $this->get_option('enabled');
         $this->title = $this->get_option('title');
+        $this->description = $this->get_option('description');
         $this->pakasir_slug = $this->get_option('pakasir_slug');
 
         add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
@@ -25,24 +26,38 @@ class WC_Gateway_Pakasir extends WC_Payment_Gateway {
     public function init_form_fields() {
         $this->form_fields = array(
             'enabled' => array(
-                'title' => 'Enable/Disable',
-                'type' => 'checkbox',
-                'label' => 'Aktifkan Pakasir',
-                'default' => 'yes'
+              'title' => 'Enable/Disable',
+              'type' => 'checkbox',
+              'label' => 'Aktifkan Pakasir',
+              'default' => 'yes'
+            ),
+            'title' => array(
+              'title' => 'Judul',
+              'type' => 'text',
+              'description' => 'Judul yang ditampilkan di halaman Checkout',
+              'default' => 'Pakasir',
+              'desc_tip' => true
+            ),
+            'description' => array(
+              'title' => 'Deskripsi',
+              'type' => 'text',
+              'description' => 'Deskripsi yang ditampilkan di halaman Checkout',
+              'default' => 'Bayar dengan Pakasir Payment Gateway',
+              'desc_tip' => true
             ),
             'pakasir_slug' => array(
-                'title' => 'Pakasir Slug',
-                'type' => 'text',
-                'description' => 'Dapatkan di halaman detail proyek Pakasir.',
-                'default' => '',
-                'desc_tip' => true
+              'title' => 'Pakasir Slug',
+              'type' => 'text',
+              'description' => 'Dapatkan di halaman detail proyek Pakasir.',
+              'default' => '',
+              'desc_tip' => true
             ),
             'pakasir_api_key' => array(
-                'title' => 'Pakasir API Key',
-                'type' => 'password',
-                'description' => 'Dapatkan di halaman detail proyek Pakasir.',
-                'default' => '',
-                'desc_tip' => true
+              'title' => 'Pakasir API Key',
+              'type' => 'password',
+              'description' => 'Dapatkan di halaman detail proyek Pakasir.',
+              'default' => '',
+              'desc_tip' => true
             ),
         );
     }
