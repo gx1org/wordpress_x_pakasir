@@ -4,7 +4,7 @@
  * Plugin Name: Pakasir for WooCommerce
  * Plugin URI:  https://pakasir.gx1.org/
  * Description: Pakasir Payment Gateway for WooComerce.
- * Version:     1.1.0
+ * Version:     1.2.0
  * Author:      PT. Geksa Eksplorasi Satu
  * Author URI:  https://gx1.org/
  */
