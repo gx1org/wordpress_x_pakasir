@@ -10,7 +10,7 @@ Pastikan Anda telah memiliki wordpress yang sudah berjalan (di lokal maupun di h
 
 Anda juga wajib memiliki plugin Woocomerce sebelum menginstall plugin ini.
 
-1. Download the [pakasir.zip](pakasir.zip) file.
+1. Download the [pakasir.zip](https://github.com/gx1org/wordpress_x_pakasir/raw/refs/heads/main/pakasir.zip) file.
 
 2. Login ke halaman wp-admin, Lalu upload plugin `pakasir.zip`. (Plugins > Add new Plugin > Upload Plugin).
 
