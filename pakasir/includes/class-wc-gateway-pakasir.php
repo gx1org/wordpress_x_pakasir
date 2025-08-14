@@ -66,7 +66,7 @@ class WC_Gateway_Pakasir extends WC_Payment_Gateway {
         $order = wc_get_order($order_id);
         $amount = $order->get_total();
         $slug = $this->pakasir_slug;
-        $url = "https://pakasir.zone.id/pay/$slug/$amount/?order_id=$order_id";
+        $url = "https://app.pakasir.com/pay/$slug/$amount/?order_id=$order_id";
 
         return array(
             'result' => 'success',
@@ -103,7 +103,7 @@ function pakasir_webhook(WP_REST_Request $request) {
   $slug = $pakasir_settings['pakasir_slug'];
   $api_key = $pakasir_settings['pakasir_api_key'];
 
-  $url = "https://pakasir.zone.id/api/transactiondetail?project=$slug&amount=$amount&order_id=$order_id&api_key=$api_key";
+  $url = "https://app.pakasir.com/api/transactiondetail?project=$slug&amount=$amount&order_id=$order_id&api_key=$api_key";
   error_log($url);
   $response = wp_remote_get($url);
   if (is_wp_error($response)) {
