@@ -4,7 +4,9 @@ if (!defined('ABSPATH')) {
 }
 
 class WC_Gateway_Pakasir extends WC_Payment_Gateway {
-  private $pakasir_slug;
+    private $pakasir_slug;
+    private $pakasir_redirect_url;
+    private $pakasir_qris_only;
     public function __construct() {
         $this->id = 'pakasir';
         $this->method_title = 'Pakasir';
@@ -19,6 +21,8 @@ class WC_Gateway_Pakasir extends WC_Payment_Gateway {
         $this->title = $this->get_option('title');
         $this->description = $this->get_option('description');
         $this->pakasir_slug = $this->get_option('pakasir_slug');
+        $this->pakasir_redirect_url = $this->get_option('pakasir_redirect_url');
+        $this->pakasir_qris_only = $this->get_option('pakasir_qris_only');
 
         add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
     }
@@ -59,6 +63,21 @@ class WC_Gateway_Pakasir extends WC_Payment_Gateway {
               'default' => '',
               'desc_tip' => true
             ),
+            'pakasir_redirect_url' => array(
+              'title' => 'Redirect URL',
+              'type' => 'text',
+              'description' => 'Link redirect setelah pembayaran berhasil',
+              'default' => get_site_url().'/my-account/orders',
+              'desc_tip' => true
+            ),
+            'pakasir_qris_only' => array(
+              'title' => 'QRIS Only',
+              'type' => 'checkbox',
+              'description' => 'Otomatis memunculkan kode QRIS dan tidak bisa ganti metode pembayaran lain',
+              'label' => 'Hanya dapat dibayar dengan QRIS',
+              'default' => 'no',
+              'desc_tip' => true
+            ),
         );
     }
 
@@ -66,7 +85,9 @@ class WC_Gateway_Pakasir extends WC_Payment_Gateway {
         $order = wc_get_order($order_id);
         $amount = $order->get_total();
         $slug = $this->pakasir_slug;
-        $url = "https://app.pakasir.com/pay/$slug/$amount/?order_id=$order_id";
+        $redir = $this->pakasir_redirect_url;
+        $qris = $this->pakasir_qris_only == 'yes' ? '&qris_only=1' : '';
+        $url = "https://app.pakasir.com/pay/{$slug}/{$amount}/?order_id={$order_id}{$qris}&redirect={$redir}";
 
         return array(
             'result' => 'success',
@@ -104,7 +125,6 @@ function pakasir_webhook(WP_REST_Request $request) {
   $api_key = $pakasir_settings['pakasir_api_key'];
 
   $url = "https://app.pakasir.com/api/transactiondetail?project=$slug&amount=$amount&order_id=$order_id&api_key=$api_key";
-  error_log($url);
   $response = wp_remote_get($url);
   if (is_wp_error($response)) {
     error_log(print_r($response, true));
