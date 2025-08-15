@@ -127,13 +127,11 @@ function pakasir_webhook(WP_REST_Request $request) {
   $url = "https://app.pakasir.com/api/transactiondetail?project=$slug&amount=$amount&order_id=$order_id&api_key=$api_key";
   $response = wp_remote_get($url);
   if (is_wp_error($response)) {
-    error_log(print_r($response, true));
     return new WP_REST_Response(['message' => 'Internal server error'], 500);
   }
 
   $response_body = json_decode(wp_remote_retrieve_body($response), true);
   if (!isset($response_body['transaction'])) {
-    error_log(print_r($response_body, true));
     return new WP_REST_Response(['message' => 'Internal server error'], 500);
   }
 

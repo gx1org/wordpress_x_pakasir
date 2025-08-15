@@ -3,10 +3,13 @@
 /**
  * Plugin Name: Pakasir for WooCommerce
  * Plugin URI:  https://pakasir.com/
- * Description: Pakasir Payment Gateway for WooComerce.
+ * Description: Pakasir Payment Gateway (QRIS, Virtual Account, etc) for WooComerce.
  * Version:     1.2.0
  * Author:      PT. Geksa Eksplorasi Satu
  * Author URI:  https://gx1.org/
+ * License:     GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain: pakasir-for-woocommerce
  */
 
 if (!defined('ABSPATH')) {
@@ -36,7 +39,7 @@ add_action('enqueue_block_assets', function () {
       'pakasir-blocks',
       plugin_dir_url(__FILE__) . 'assets/pakasir-blocks-integration.js',
       array('react', 'wp-element', 'wp-hooks', 'wc-blocks-registry', 'wc-blocks-checkout'),
-      null,
+      true,
       true
     );
 
@@ -55,3 +58,21 @@ add_action('enqueue_block_assets', function () {
     wp_enqueue_script('pakasir-blocks');
   }
 });
+
+register_activation_hook( __FILE__, 'myplugin_check_woocommerce' );
+
+function myplugin_check_woocommerce() {
+    // Cek apakah WooCommerce aktif
+    if ( ! class_exists( 'WooCommerce' ) ) {
+        // Matikan plugin kita
+        deactivate_plugins( plugin_basename( __FILE__ ) );
+
+        // Tampilkan pesan error
+        wp_die(
+            'Plugin ini memerlukan WooCommerce untuk berjalan. 
+            Silakan instal dan aktifkan WooCommerce terlebih dahulu.',
+            'Plugin Dibatalkan',
+            array( 'back_link' => true )
+        );
+    }
+}
