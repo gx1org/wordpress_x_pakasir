@@ -8,41 +8,41 @@ Stable tag: 1.2.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Pakasir Payment Gateway (QRIS, Virtual Account, etc) for WooComerce.
+Pakasir Payment Gateway (QRIS, Virtual Account, etc) for WooComerce. (compatible with Indonesia banks/e-wallets only)
+
+## External services
+
+This plugin connects to Pakasir API to create a payment link and check it's status. Once the payment status become paid, it will make the related Woocomerce order become completed.
+
+It doesn't send any user's data. It's only send the order id and the total amount needs to be paid.
+
+This service is provided by "Pakasir": [terms of use](https://pakasir.com/p/tos), [privacy policy](https://pakasir.com/p/privacy).
 
 ## Prerequisite
 
-Sebelum memulai, pastikan Anda telah memiliki proyek di Pakasir. Jika belum, Anda dapat [membuatnya sekarang](https://pakasir.com).
+This plugin requires WooCommerce installed and active in your Wordpress.
 
-Setelah membuat proyek, Anda perlu mencacat/menyimpan Slug dan API Key. Kita akan membutuhkannya nanti.
+Also, it needs an active Pakasir project. If you didn't have it yet, please create one at [Pakasir website](https://app.pakasir.com/projects)
+
+After creating a project, please save the `slug` and the `api key`. You will need it.
 
 ## How to install
 
-Pastikan Anda telah memiliki wordpress yang sudah berjalan (di lokal maupun di hosting).
+1. After installing and activating the plugin, you can click the Manage link under the Plugin name, in the "Installed Plugins" page.
 
-Anda juga wajib memiliki plugin Woocomerce sebelum menginstall plugin ini.
+2. Paste the `slug` and `api key` that you have from the Pakasir website. (In the project detail page).
 
-1. Download the [pakasir.zip](https://github.com/gx1org/wordpress_x_pakasir/raw/refs/heads/main/pakasir.zip) file.
-
-2. Login ke halaman wp-admin, Lalu upload plugin `pakasir.zip`. (Plugins > Add new Plugin > Upload Plugin).
-
-3. Aktifkan pluginnya, Lalu klik "Manage" pada halaman Installed Plugins.
-
-4. Silakan paste Slug dan Api Key yang Anda dapat dari halaman Pakasir. Lalu klik Save Changes.
-
-5. Langkah terakhir yaitu mengatur webhook.
+3. Setting the webhook in the pakasir website. (see below instruction).
 
 ## Add webhook to Pakasir
 
-1. Buka halaman detail proyek Anda di web Pakasir.
+1. Open your project in the [Pakasir website](https://app.pakasir.com/projects). Go to the project detail page.
 
-2. Klik tombol `Edit Proyek`, lalu masukkan URL webhooknya:
+2. Click `Edit Proyek` button, input the following webhook URL:
 ```
 https://example.com/wp-json/pakasir/v1/webhook
 ```
-_Ganti `example.com` dengan alamat wordpress Anda._
-
-Selesai. Sekarang Anda dapat checkout dengan metode pembayaran Pakasir.
+_Replace `example.com` with you actual wordpress domain._
 
 ## Demo
 
@@ -51,8 +51,4 @@ For a demo, please go to [http://knbr.wuaze.com/shop](http://knbr.wuaze.com/shop
 ## Resources
 
 - [Pakasir docs](https://pakasir.com/p/docs)
-- [PT. Geksa Contact form](https://gx1.org/?contact=Pakasir#contact)
 
-## Contributing
-
-Please create an issue or pull request.

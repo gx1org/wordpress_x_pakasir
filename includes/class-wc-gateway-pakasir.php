@@ -39,14 +39,14 @@ class WC_Gateway_Pakasir extends WC_Payment_Gateway {
               'title' => 'Judul',
               'type' => 'text',
               'description' => 'Judul yang ditampilkan di halaman Checkout',
-              'default' => 'Pakasir',
+              'default' => 'Pakasir Payment Gateway',
               'desc_tip' => true
             ),
             'description' => array(
               'title' => 'Deskripsi',
               'type' => 'text',
               'description' => 'Deskripsi yang ditampilkan di halaman Checkout',
-              'default' => 'Bayar dengan Pakasir Payment Gateway',
+              'default' => 'Bayar dengan QRIS, Virtual Account, dll',
               'desc_tip' => true
             ),
             'pakasir_slug' => array(
@@ -88,6 +88,9 @@ class WC_Gateway_Pakasir extends WC_Payment_Gateway {
         $redir = $this->pakasir_redirect_url;
         $qris = $this->pakasir_qris_only == 'yes' ? '&qris_only=1' : '';
         $url = "https://app.pakasir.com/pay/{$slug}/{$amount}/?order_id={$order_id}{$qris}&redirect={$redir}";
+
+        $order->update_status( 'on-hold', 'Menunggu pembayaran Pakasir');
+        WC()->cart->empty_cart();
 
         return array(
             'result' => 'success',
