@@ -148,11 +148,24 @@ function pakasir_webhook(WP_REST_Request $request) {
 }
 
 
+function pakasir_verify_signature( WP_REST_Request $request ) {
+    $signature = $request->get_header('x-signature');
+    if ( $signature === md5('pakasir') ) {
+        return true;
+    }
+
+    return new WP_Error(
+        'forbidden',
+        __('Invalid signature', 'pakasir-for-woocommerce'),
+        ['status' => 403]
+    );
+}
+
 // Endpoint to handle webhook from Pakasir: http://example.com/wp-json/pakasir/v1/webhook
 add_action('rest_api_init', function() {
   register_rest_route('pakasir/v1', '/webhook', [
       'methods' => 'POST',
       'callback' => 'pakasir_webhook',
-      'permission_callback' => '__return_true',
+      'permission_callback' => 'pakasir_verify_signature',
   ]);
 });
