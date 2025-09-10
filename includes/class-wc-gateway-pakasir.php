@@ -2,6 +2,9 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+if ( ! class_exists( 'WC_Payment_Gateway' ) ) {
+    return;
+}
 
 class WC_Gateway_Pakasir extends WC_Payment_Gateway {
     private $pakasir_slug;
@@ -130,12 +133,12 @@ function pakasir_webhook(WP_REST_Request $request) {
   $url = "https://app.pakasir.com/api/transactiondetail?project=$slug&amount=$amount&order_id=$order_id&api_key=$api_key";
   $response = wp_remote_get($url);
   if (is_wp_error($response)) {
-    return new WP_REST_Response(['message' => 'Internal server error'], 500);
+    return new WP_REST_Response(['message' => 'Cannot call pakasir API'], 500);
   }
 
   $response_body = json_decode(wp_remote_retrieve_body($response), true);
   if (!isset($response_body['transaction'])) {
-    return new WP_REST_Response(['message' => 'Internal server error'], 500);
+    return new WP_REST_Response(['message' => $response_body['message']], 500);
   }
 
   $status = $response_body['transaction']['status'];

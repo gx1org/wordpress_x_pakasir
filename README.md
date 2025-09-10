@@ -1,14 +1,14 @@
 # Pakasir for WooCommerce
 
-Contributors: hdrxs312
-Tags: payment gateway, qris, woocommerce
-Requires at least: 4.7
-Tested up to: 6.8
-Stable tag: 1.2.0
-Requires PHP: 7.0
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Pakasir Payment Gateway (QRIS, Virtual Account, etc) for WooComerce. (compatible with Indonesia banks/e-wallets only)
+- Contributors: hdrxs312
+- Tags: payment gateway, qris, woocommerce
+- Requires at least: 4.7
+- Tested up to: 6.8
+- Stable tag: 1.2.1
+- Requires PHP: 7.0
+- License: GPLv2 or later
+- License URI: https://www.gnu.org/licenses/gpl-2.0.html
+- Pakasir Payment Gateway (QRIS, Virtual Account, etc) for WooComerce. (compatible with Indonesia banks/e-wallets only)
 
 ## External services
 
