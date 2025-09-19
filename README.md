@@ -34,6 +34,9 @@ After creating a project, please save the `slug` and the `api key`. You will nee
 
 3. Setting the webhook in the pakasir website. (see below instruction).
 
+<img width="867" height="636" alt="image" src="https://github.com/user-attachments/assets/c3cdd2f1-a59d-48ec-9387-14dd7ea1f76a" />
+
+
 ## Add webhook to Pakasir
 
 1. Open your project in the [Pakasir website](https://app.pakasir.com/projects). Go to the project detail page.
@@ -43,6 +46,9 @@ After creating a project, please save the `slug` and the `api key`. You will nee
 https://example.com/wp-json/pakasir/v1/webhook
 ```
 _Replace `example.com` with you actual wordpress domain._
+
+<img width="761" height="446" alt="image" src="https://github.com/user-attachments/assets/bdd404c9-b672-4ecd-8775-960ccb5a48bf" />
+
 
 ## Demo
 
