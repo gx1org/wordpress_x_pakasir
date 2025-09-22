@@ -1,4 +1,5 @@
 # Pakasir for WooCommerce
+<img width="755" height="440" alt="image" src="https://github.com/user-attachments/assets/01357210-7840-4983-a8ee-91bfe095aef9" />
 
 - Contributors: hdrxs312
 - Tags: payment gateway, qris, woocommerce
