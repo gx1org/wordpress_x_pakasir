@@ -1,11 +1,10 @@
 # Pakasir for WooCommerce
-<img width="755" height="440" alt="image" src="https://github.com/user-attachments/assets/01357210-7840-4983-a8ee-91bfe095aef9" />
 
 - Contributors: hdrxs312
 - Tags: payment gateway, qris, woocommerce
 - Requires at least: 4.7
 - Tested up to: 6.8
-- Stable tag: 1.2.1
+- Stable tag: 1.2.4
 - Requires PHP: 7.0
 - License: GPLv2 or later
 - License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -33,9 +32,7 @@ After creating a project, please save the `slug` and the `api key`. You will nee
 
 2. Paste the `slug` and `api key` that you have from the Pakasir website. (In the project detail page).
 
-3. Setting the webhook in the pakasir website. (see below instruction).
-
-<img width="867" height="636" alt="image" src="https://github.com/user-attachments/assets/c3cdd2f1-a59d-48ec-9387-14dd7ea1f76a" />
+[See image here](https://github.com/user-attachments/assets/c3cdd2f1-a59d-48ec-9387-14dd7ea1f76a)
 
 
 ## Add webhook to Pakasir
@@ -48,7 +45,7 @@ https://example.com/wp-json/pakasir/v1/webhook
 ```
 _Replace `example.com` with you actual wordpress domain._
 
-<img width="761" height="446" alt="image" src="https://github.com/user-attachments/assets/bdd404c9-b672-4ecd-8775-960ccb5a48bf" />
+[See image here](https://github.com/user-attachments/assets/01357210-7840-4983-a8ee-91bfe095aef9)
 
 
 ## Demo
